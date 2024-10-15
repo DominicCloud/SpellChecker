@@ -1,7 +1,6 @@
 
-def loadCorpus(corpus):
-    #function to load the dictionary/corpus and store it in a global list
-    print("Scripts spell checker")
+def loadCorpus():
+    corpus = list()
     with open('scripts/hindi_corpus.txt',encoding='utf-8') as file:
         for word in file:
             word = word.strip()
@@ -9,7 +8,6 @@ def loadCorpus(corpus):
     return corpus
 
 def getLevenshteinDistance(s, t):
-
     rows = len(s)+1
     cols = len(t)+1
     dist = [[0 for x in range(cols)] for x in range(rows)]
@@ -35,18 +33,11 @@ def getLevenshteinDistance(s, t):
 def getCorrectWord(word,corpus):
     min_dis=100
     correct_word=""
+
     for s in corpus:
         cur_dis = getLevenshteinDistance(s,word)
         if min_dis > cur_dis :
             min_dis = cur_dis
             correct_word = s
     return correct_word
-    
-
-    
-"""
-if __name__ == "__main__":
-    #main function : execution starts from here
-    pass"""
-    
 

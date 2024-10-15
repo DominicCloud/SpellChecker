@@ -46,3 +46,8 @@ body{
 .container{
   color:rgb(192, 172, 243);
 }
+
+.corrected {
+  color: red;  /* Change this to whatever color you prefer */
+  font-weight: bold;  /* Optional: make it bold */
+}
