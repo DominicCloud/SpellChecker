@@ -2,7 +2,7 @@
 import sys 
 import os
 from scripts.spell_check import *
-from scripts.preprocessor import tokenize, stopword_removal
+from scripts.preprocessor import *
 from flask import Flask,render_template, request, session
 
 app = Flask(__name__)
@@ -11,14 +11,23 @@ c = []
 
 def hindi(t):
     corpus=loadCorpus()
-    words = t.strip().split()
+    words = tokenize(t)
     corrected=[]
     for word in words:
+        if has_non_hindi_characters(word): # Non-hindi word detected!, immediately log, and continue to next word
+             corrected.append(f'<span class="non-hindi-word">{word}</span>')
+             continue
+
+        if is_stopword(word):
+             corrected.append(f'<span class="stopword">{word}</span>') # Stopword detected; continue without further processing
+             continue
+        
         if word not in corpus :
             corrected_word = getCorrectWord(word, corpus)
             corrected.append(f'<span class="corrected">{corrected_word}</span>')  # Mark corrected word
         else:
-            corrected.append(word)    
+            corrected.append(word)
+  
     result=' '.join(corrected)
     return result
 

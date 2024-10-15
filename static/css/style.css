@@ -48,6 +48,16 @@ body{
 }
 
 .corrected {
-  color: red;  /* Change this to whatever color you prefer */
+  color: rgb(255, 0, 0);  /* Change this to whatever color you prefer */
   font-weight: bold;  /* Optional: make it bold */
+}
+
+.stopword {
+  color: rgb(169, 169, 169);  /* Change this to whatever color you prefer */
+  font-style: italic;  /* Optional: make it bold */
+}
+
+.non-hindi-word{
+  color: #1aa5fc;  /* Change this to whatever color you prefer */
+  font-style: italic; 
 }
