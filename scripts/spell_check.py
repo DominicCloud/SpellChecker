@@ -3,8 +3,9 @@
 
 def loadCorpus(corpus):
     #function to load the dictionary/corpus and store it in a global list
+    print("Scripts spell checker")
     with open('hindi_corpus.txt',encoding='utf-8') as file:
-        a=1
+        # a=1
         for word in file:
             word = word.strip()
             corpus.append(word)
