@@ -38,10 +38,7 @@ def process_input():
         
     if request.method == 'POST':
         t=request.form['input_text']
-        if request.form.get('action1')=='eng':
-            res=english(t)
-        elif request.form.get('action2')=='hin':
-            res=hindi(t) 
+        res=hindi(t) 
     
         return render_template("login.html",prediction =res)
 
